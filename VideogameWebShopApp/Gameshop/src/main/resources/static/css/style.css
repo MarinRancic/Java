@@ -1,0 +1,91 @@
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url("/image/background.jpg");
+	background-size: 1920px;
+}
+.welcome {
+	text-align:center;
+	color: yellow;
+	font-size:4em;
+	font-family: 'Yellowtail', cursive;
+	margin-bottom: 50px;
+}
+
+.picture_row {
+	 margin-bottom:100px; 
+	 text-align:center;
+}
+
+.navbar {
+	margin-bottom: 20px;
+}
+
+.box {
+	border: 1px solid red;
+}
+
+.home-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: yellow;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 13px;
+}
+
+.home-headline span {
+	background-color: black;
+	padding: 5px 22px;
+}
+
+.first_row
+{
+	background-color: black;
+	margin:100px 10px 50px 10px;
+	color: red;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: yellow;
+	background-color: yellow;
+	margin-bottom: 55px;
+	
+}
+
+
+footer {
+    min-height: 20px;
+    background-color: black;
+    text-align: center;
+    color: red;
+    padding: 10px;
+    width:100%;
+    position:fixed;
+    bottom:0;
+    left: 0px;
+/* 	margin-bottom:-20px; */
+/* 	margin-top:130px; */
+}
+
+.carousel-inner {
+	width: 100%;
+	max-height: 215px !important;
+}
+
+
+.selection-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: yellow;
+	margin: auto;
+	text-align: center;
+	margin-top: 90px;
+}
+
+.selection-headline span {
+	background-color: black;
+	padding: 5px 22px;
+}

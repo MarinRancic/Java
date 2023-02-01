@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header">
+
+
+</head>
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+
+		<div class="container__aboutUs_title">
+			<h1>ABOUT US</h1>
+		</div>
+
+		<p>Our non-profit volunteer organisation was founded in 1995. Our
+			first goal was achieved when we were able to get enough of kind
+			people for volunteering. They rescued a lot of animals all across
+			Split and even further. We brought them into foster care and worked
+			hard to adopt them all to their forever homes. In 2000, with the
+			permission from the City of Split, we were able to use the space on a
+			hill named Marjan to build a new animal shelter. Located near center
+			of Split, we built Animal Shelter Marjan with volunteers and our own
+			materials.</p>
+		<div class="container__aboutUs_picture1">
+			<img src="/image/animalsAtTheShelter.png" class=dogs>
+		</div>
+
+		<p>All these years later, the shelter survives in very harsh
+			conditions. We don't have electricity or running water and the
+			shelter is exposed to strong winds and thunderstorms. It is freezing
+			cold in winter and scorching hot in the summer.</p>
+
+		<div class="container__aboutUs_picture2">
+			<img src="/image/animalsHouse.png" class="house">
+		</div>
+
+		<p>
+			The average number of animals in the shelter is around 300. All dogs
+			are regularly vaccinated, microchipped and castrated. Volunteers
+			spend 24 hours a day with the animals and they are all very well
+			socialized, friendly and ready for adoption. 
+			</br></br>In addition to the daily
+			running of the shelter, volunteers are working on many animal welfare
+			campaigns. We promote animal welfare, we educate children, organize
+			humanitarian concerts and exhibitions, we promote veganism and
+			protection of farm animals and we advocate a ban on testing on
+			animals, hunting, circuses, zoos etc.</br></br> Our organisation Animal Shelter
+			Marjan also helps injured and sick wild animals. They get medical
+			help when it is needed and after recovery, they are returned to
+			nature. We also have feeding stations for cats and we currently have
+			over 150 cats/kittens in our care. When we have the financial
+			resources, we also run Trap-neuter-release programs for street cats.
+			When we come across street cats that require special care who can't
+			live on the street, we place them in foster care in the homes of our
+			volunteers. According to Croatian animal welfare law, the City of
+			Split must have a City animal shelter for stray animals to go to. But
+			obviously they don't recognise the importance of animal care as there
+			is currently no animal shelter provided by the City of Split. </br></br>We are
+			proud and happy that we can [with hard work from our volunteers] help
+			the City of Split - the worldwide famous tourist destination to be
+			more successful because abandoned animals on the streets don't go
+			well together with the tourism. With all projects of Animal Shelter
+			Marjan, volunteers have invested their own funds. But as the volume
+			of work needed has increased, we have needed more help. We are
+			fortunate to have support from our friends from around the world <a
+				th:href="@{/donate}">donors</a>, <a th:href="@{/volunteer}">volunteers</a>,
+			<a th:href="@{/adopt}">adopters</a> and all other people who have
+			helped in different ways, recognising and supporting our work. We
+			couldn't succeed without the incredible support that we receive. Come
+			visit us at Animal Shelter Marjan. You will never forget your time
+			with us. You may even find your new furry best friend!
+		</p>
+		
+		<div class="container__aboutUs_picture3">
+			
+			<img src="/image/animalsEntrance.png" class="entrance">
+		</div>
+
+	</div>
+
+
+
+	<div th:replace="common/header :: footer"></div>
+
+	<!-- 	<div th:replace="common/header :: body-bottom-scripts"></div> -->
+</body>
+</html>

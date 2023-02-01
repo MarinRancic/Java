@@ -1,0 +1,57 @@
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url("/image/background.jpg");
+	background-size: 1920px;
+}
+
+.navbar {
+	margin-bottom: 20px;
+}
+
+.box {
+	border: 1px solid red;
+}
+
+.home-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: yellow;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 13px;
+}
+
+.home-headline span {
+	background-color: black;
+	padding: 5px 22px;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: yellow;
+	background-color: yellow;
+	margin-bottom: 55px;
+	
+}
+
+.carousel-inner {
+	width: 100%;
+	max-height: 215px !important;
+}
+
+
+.selection-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: yellow;
+	margin: auto;
+	text-align: center;
+	margin-top: 90px;
+}
+
+.selection-headline span {
+	background-color: black;
+	padding: 5px 22px;
+}

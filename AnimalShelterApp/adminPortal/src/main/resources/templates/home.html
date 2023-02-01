@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+	<a th:href="@{/animal/add}" class="btn btn-success"
+		style="margin-left: 400px; margin-bottom: 35px">Add Animal</a>
+	<div class="container">
+		<div class="table-responsive">
+			<table id="animalListTable"
+				class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th><a
+							th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
+								Name</a></th>
+						<th><a
+							th:href="@{'/page/' + ${currentPage} + '?sortField=species&sortDir=' + ${reverseSortDir}}">Species</a></th>
+						<th><a
+							th:href="@{'/page/' + ${currentPage} + '?sortField=age&sortDir=' + ${reverseSortDir}}">Age</a></th>
+						<th><a
+							th:href="@{'/page/' + ${currentPage} + '?sortField=weight&sortDir=' + ${reverseSortDir}}">Weight</a></th>
+						<th><a
+							th:href="@{'/page/' + ${currentPage} + '?sortField=height&sortDir=' + ${reverseSortDir}}">Height</a></th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="animal : ${animalList}">
+						<td><a th:href="@{/animal/animalInfo(id=${animal.id})}"><span
+								th:text="${animal.name}"></span></a></td>
+						<td th:text="${animal.species}"></td>
+						<td th:text="${animal.age}"></td>
+						<td th:text="${animal.weight}+kg"></td>
+						<td th:text="${animal.height}+m"></td>
+						<td><a th:href="@{/animal/updateAnimal?id=}+${animal.id}"
+							class="btn btn-primary">Update</a> <a
+							th:href="@{/animal/remove?id=}+${animal.id}"
+							class="btn btn-danger">Delete</a></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div th:if="${totalPages > 1}">
+		<div class="row col-sm-10" style="margin-left: 400px">
+			<div class="col-sm-2">Total Rows: [[${totalItems}]]</div>
+
+			<div class="col-sm-1">
+				<span th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
+					th:if="${currentPage != i}"
+					th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+					<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+				</span>
+			</div>
+
+			<div class="col-sm-1">
+				<a th:if="${currentPage < totalPages}"
+					th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+				<span th:unless="${currentPage < totalPages}">Next</span>
+			</div>
+
+			<div class="col-sm-1">
+				<a th:if="${currentPage < totalPages}"
+					th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+				<span th:unless="${currentPage < totalPages}">Last</span>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

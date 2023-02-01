@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
+	rel="stylesheet">
+
+</head>
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="welcome">
+		<p>WELCOME TO THE BEST</p>
+		<p>AND CHEAPEST GAMESHOP ON THE WEB</p>
+	</div>
+
+	<div class="container">
+		<div class="a" style="margin-bottom: 100px;">
+		<img src="/image/OutlawLogo.PNG" class="img-responsive"
+			style="border-radius: 20px; margin-left:auto; margin-right:auto;" />
+	</div>
+		<div class="home-headline">
+			<span>Newest games on the market!</span>
+		</div>
+		<hr style="margin-top: -27px" />
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<div id="featured-games" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#featured-games" data-slide-to="0" class="active"></li>
+						<li data-target="#featured-games" data-slide-to="1"></li>
+						<li data-target="#featured-games" data-slide-to="2"></li>
+					</ol>
+
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<div class="row">
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/GodOfWar.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Skyrim.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/SW.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/TLoU2.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/CoD.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/GTA5.jpg" />
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="row">
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Sims4.jpeg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/MK11.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Borderlands3.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Hitman.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Jumanji.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/CoDMW.jpg" />
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="row">
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/MoH.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/CoDBO2.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Cyberpunk.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/GTA5Pc.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/BF4.jpeg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/Breach.jpg" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<a class="left carousel-control" href="##featured-games"
+						role="button" data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a> <a class="right carousel-control" href="##featured-games"
+						role="button" data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+				<div class="row first_row">
+			<div class="col-xs-6">
+				<div>
+					<div class="panel-body">
+						<img src="/image/cheap.jpg" class="img-responsive"
+							style="border-radius: 20px;" />
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6" >
+				<div>
+					<div class="panel-body">
+						<h3 class="text-center"
+							style="padding: 0 100px; line-height: 26px; color: rgb(51, 122, 183);">Cheapest
+							games on the market!</h3>
+						<p style="padding: 0 100px; line-height: 26px;">
+							We have the cheapest and best quality games for everyone.
+							Hardcore gamer? Just a casual who wants to have fun? Like
+							exploring new worlds and collecting shiny things? Or maybe you
+							need something to get spooked by? Whatever you like, whatever you
+							need, we got you covered! Click <strong><a
+								th:href="@{/browseGames}">here</a></strong> and take a look at all games
+							we offer.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row first_row">
+			<div class="col-xs-6">
+				<div>
+					<div class="panel-body">
+						<h3 class="text-center"
+							style="padding: 40px 0 20px; color: rgb(51, 122, 183);">Games
+							for every console!</h3>
+						<p style="padding: 0 100px; line-height: 26px;">Do you prefer
+							playing on PC like a real master race or rather on consoles? We
+							have games for vast majority of consoles so you can pick whatever
+							you prefer the most!</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<div>
+					<div class="panel-body">
+						<img src="/image/console.png" class="img-responsive"
+							style="border-radius: 20px;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:replace="common/header :: footer"></div>
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

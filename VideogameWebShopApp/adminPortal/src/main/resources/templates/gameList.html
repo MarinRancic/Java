@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<div class="table-responsive">
+			<table id="gameListTable"
+				class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th><input th:id="selectAllGames" type="checkbox" /></th>
+						<th>Title</th>
+						<th>Company</th>
+						<th>Category</th>
+						<th>Size</th>
+						<th>Platform</th>
+						<th>List Price</th>
+						<th>Our Price</th>
+						<th>In Stock</th>
+						<th>Operation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="game : ${gameList}">
+						<td><input hidden="hidden" name="id" th:value="${game.id}" />
+							<input th:id="'selected'+${game.id}" class="checkboxGame"
+							type="checkbox" /></td>
+
+						<td><a th:href="@{/game/gameInfo(id=${game.id})}"><span
+								th:text="${game.title}"></span></a></td>
+						<td th:text="${game.company}"></td>
+						<td th:text="${game.category}"></td>
+						<td th:text="${game.size}+GB"></td>
+						<td th:text="${game.platform}"></td>
+						<td th:text="${game.listPrice}"></td>
+						<td th:text="${game.ourPrice}"></td>
+						<td th:text="${game.inStockNumber}"></td>
+						<td><input hidden="hidden" name="id" th:value="${game.id}" />
+							<button th:id="'oneGame-'+${game.id}"
+								class="btn btn-danger bth-xs delete-game" type="submit"
+								value="delete">
+								<span class="fa fa-times">Delete</span>
+							</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<button th:id="deleteSelected"
+			class="btn btn-danger">Delete selected</button>
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+
+	<script>
+		$(document).ready(
+				function() {
+					$("#gameListTable").DataTable(
+							{
+								"lengthMenu" : [ [ 5, 10, 15, 20, -1 ],
+										[ 5, 10, 15, 20, "All" ] ],
+								"ordering" : false,
+								stateSave : true
+							});
+				});
+	</script>
+</body>
+</html>

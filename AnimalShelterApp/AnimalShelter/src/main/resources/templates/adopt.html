@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/js/parallax.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+
+		<div class="container__adopt_title">
+			<h1>ADOPT</h1>
+		</div>
+		<p>
+			We hope you find your perfect match as we have over 300 friendly
+			animals to choose from. Please visit our shelter to give an animal a
+			second chance. Feel free to <a th:href="@{/contactUs}">contact us</a>
+			with any adoption enquiries or for more information about our
+			animals.
+		</p>
+
+		<div class="container__adopt_table" style="margin-top: 100px">
+			<div class="list-group" id="species">
+				<a th:href="@{/adopt(species='all')}" class="list-group-item">All</a>
+				<a th:href="@{/searchBySpecies(species='Dog')}"
+					class="list-group-item">Dogs</a> <a
+					th:href="@{/searchBySpecies(species='Cat')}"
+					class="list-group-item">Cats</a> <a
+					th:href="@{/searchBySpecies(species='Bird')}"
+					class="list-group-item">Birds</a> <a
+					th:href="@{/searchBySpecies(species='Lizard')}"
+					class="list-group-item">Lizards</a> <a
+					th:href="@{/searchBySpecies(species='Snake')}"
+					class="list-group-item">Snakes</a>
+			</div>
+			<div class="table-responsive">
+				<table id="animalListTable"
+					class="table table-bordered table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Picture</th>
+							<th><a
+								th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
+									Name</a></th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-each="animal : ${animalList}">
+							<td><a th:href="@{/animal/animalInfo(id=${animal.id})}"><img
+									class="img-responsive animal-list"
+									th:src="#{adminPath}+@{/image/animals/}+${animal.id}+'.png'" /></a></td>
+							<td><a th:href="@{/animal/animalInfo(id=${animal.id})}"><span
+									th:text="${animal.name}"></span></a></td>
+							<td th:text="${animal.description}"></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div th:if="${totalPages > 1}">
+			<div class="row col-sm-14">
+				<div class="col-sm-2">Total Rows: [[${totalItems}]]</div>
+
+				<div class="col-sm-1">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
+						th:if="${currentPage != i}"
+						th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;
+						&nbsp;
+					</span>
+				</div>
+
+				<div class="col-sm-1">
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+					<span th:unless="${currentPage < totalPages}">Next</span>
+				</div>
+
+				<div class="col-sm-1">
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+					<span th:unless="${currentPage < totalPages}">Last</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+
+
+	<div th:replace="common/header :: footer"></div>
+
+</body>
+</html>

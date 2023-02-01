@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/js/parallax.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+
+		<div class="container__contactUs_title">
+			<h1>CONTACT US</h1>
+		</div>
+
+		<p>
+			Opening hours: 6am-10pm every day <br /> Address: Put Marjana 24,
+			Split <br /> Contact number: 0912345678 <br /> <a
+				th:href="@{https://www.google.com/intl/hr/gmail/about/}">Email:</a>
+			ASMarjan@gmail.com<br /> If you have any comments or suggestions you
+			can leave them bellow!<br />
+		</p>
+
+		<div class="panel-body">
+			<div class="alert alert-info" th:if="${commentSent}">Your
+				comment has been successfully sent! Our admins have to review it
+				first to be posted publicly.</div>
+			<form th:action="@{/newComment}" method="post">
+				<div class="form-group">
+					<label>Leave your comment here:</label>
+ 					<input type="hidden" name="username" id="username" th:value ="${#request.remoteUser}">
+					<textarea name="commentary" class="form-control" id="commentary"
+						placeholder="Enter a comment"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Post your
+					comment</button>
+			</form>
+		</div>
+
+		<div class="table-responsive">
+			<table id="commentaryListTable"
+				class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Commentary</th>
+						<th>User</th>
+						<th>Admin's message</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="commentary : ${commentaryList}">
+						<div th:if="${commentary.active == true}">
+							<td><div th:if="${commentary != null}">
+								<span th:text="${commentary.text}"></span>
+						</div></td>
+						<td th:text="${commentary.username}"></td>
+						<td th:text="${commentary.adminResponse}"></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+
+
+	</div>
+
+
+
+	<div th:replace="common/header :: footer"></div>
+
+	<!-- 	<div th:replace="common/header :: body-bottom-scripts"></div> -->
+</body>
+</html>

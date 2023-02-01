@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="common-header">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Animal Shelter Marjan</title>
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<div th:fragment="navbar">
+			<nav class="navbar">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" th:href="@{/}">Admin Portal</a>
+						<a class="navbar-brand" th:href="@{/commentaryList}" style="padding-left:50px">Comments</a>
+					</div>
+					<div class="admin-navbar">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a th:href="@{/logout}">Sign out</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<div th:fragment="body-bottom-scripts">
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/scripts.js}"></script>
+	</div>
+</body>
+</html>

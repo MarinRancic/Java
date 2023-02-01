@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/js/parallax.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+
+		<div class="container__donate_title">
+			<h1>DONATE</h1>
+		</div>
+
+		<div class="container__donate_text">
+			<p>Our shelter is run on donations. Without your support, we
+				wouldn't be able to help our dogs. Please donate to help save the
+				lives and look after more than 300 animals, each year.</p>
+			<br />
+			<p>
+				<a th:href="@{https://www.paypal.com/us/home}">PayPal:</a>AnimalShelterMarjan@gmail.com
+				<br /> Bank Deposit: IBAN - HR1234567893298765432 <br /> In
+				person: Visit us at the shelter to make a cash donation <br />Address:
+				Put Marjana 24, Split
+			<hr />
+			</p>
+			<p>
+				OTHER DONATIONS URGENTLY NEEDED: <br /> FOOD: Dog food, kitten
+				milk, kitten food, bottles... <br /> BUILDING MATERIALS: Cement,
+				gravel, wire, nails, wooden boards... <br /> MEDICATION:
+				Anibiotics, vitamins, probiotics...<br /> OTHER: Leashes, transport
+				carriers, collars, blankets...
+			</p>
+		</div>
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+	</div>
+
+
+
+	<div th:replace="common/header :: footer"></div>
+
+	<!-- 	<div th:replace="common/header :: body-bottom-scripts"></div> -->
+</body>
+</html>

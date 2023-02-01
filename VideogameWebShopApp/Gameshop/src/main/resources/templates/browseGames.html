@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xs-8">
+				<h2 class="selection-headline">
+					<h2 class="section-headline">
+						<span
+							th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Games'"
+							style="color: green"></span>
+					</h2>
+				</h2>
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 63%; height: 6px; background-color: yellow; z-index: -1; margin-top: 85px;" />
+
+
+		<div class="row" style="margin-top: 120px;">
+			<div class="col-xs-3">
+				<h3>
+					<label for="category" style="color: yellow">Category</label>
+				</h3>
+				<div class="list-group" id="category">
+					<a th:href="@{/browseGames(category='all')}"
+						th:classappend="${activeAll}? 'active'" class="list-group-item">All</a>
+					<a th:href="@{/searchByCategory(category='Adventure')}"
+						th:classappend="${activeAdventure}? 'active'"
+						class="list-group-item">Adventure</a> <a
+						th:href="@{/searchByCategory(category='Shooter')}"
+						th:classappend="${activeShooter}? 'active'"
+						class="list-group-item">Shooter</a> <a
+						th:href="@{/searchByCategory(category='Horror')}"
+						th:classappend="${activeHorror}? 'active'" class="list-group-item">Horror</a>
+					<a th:href="@{/searchByCategory(category='Sport')}"
+						th:classappend="${activeSport}? 'active'" class="list-group-item">Sport</a>
+					<a th:href="@{/searchByCategory(category='Fighting')}"
+						th:classappend="${activeFighting}? 'active'"
+						class="list-group-item">Fighting</a>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<div th:if="${emptyList}">
+					<h5 style="font-style: italic; color:yellow">Oops, no result is found. Try
+						something else or try again later.</h5>
+				</div>
+
+
+				<table border="0" id="gameList">
+					<thead>
+						<tr>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="game-item" data-th-each="game : ${gameList}">
+							<td>
+								<div th:if="${game != null}">
+									<div class="row" style="margin-bottom: 50px;">
+										<div class="col-xs-3">
+											<a th:href="@{/gameDetails?id=}+${game.id}"><img
+												class="img-responsive browse-games"
+												th:src="#{adminPath}+@{/image/games/}+${game.id}+'.png'" /></a>
+										</div>
+										<div class="col-xs-9">
+											<a th:href="@{/gameDetails?id=}+${game.id}"><h4
+													th:text="${game.title}" style="color: black"></h4></a> <span
+												th:text="${game.company}" style="color: black"></span>
+											<p th:text="${game.category}" style="color: black"></p>
+											<span th:text="${game.platform}" style="color: black"></span>
+											<p th:text="${game.size}+GB" style="color: black"></p>
+											<a th:href="@{/gameDetails?id=}+${game.id}"> <span
+												style="font-size: x-large; color: #db3208;">$<span
+													th:text="${#numbers.formatDecimal(game.ourPrice, 0, 'COMMA', 2, 'POINT')}"></span></span></a>
+											<span style="text-decoration: line-through; color: black">$<span
+												th:text="${#numbers.formatDecimal(game.listPrice, 0, 'COMMA', 2, 'POINT')}"></span></span>
+											<br />
+											<p th:utext="${#strings.abbreviate(game.description, 500)}"
+												style="color: black"></p>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<br/><br/><br/>
+
+	<div th:replace="common/header :: footer"></div>
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+
+	<script>
+		$(document).ready(
+				function() {
+					$('#gameList').DataTable(
+							{
+								"lengthMenu" : [ [ 5, 10, 15, 20, -1 ],
+										[ 5, 10, 15, 20, "All" ] ],
+								"ordering" : false,
+								stateSave : true
+							});
+
+					$("#gameList").on('page.dt', function() {
+						$('html, body').animate({
+							scrollTop : $('#gameList').offset().top
+						}, 200);
+					});
+				});
+	</script>
+</body>
+</html>

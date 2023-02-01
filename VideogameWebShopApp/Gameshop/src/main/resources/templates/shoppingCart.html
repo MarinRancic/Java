@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<h2 class="section-headline" style="color: yellow">
+						<span
+							th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Games'"></span>
+					</h2>
+				</h2>
+			</div>
+		</div>
+		<hr />
+		<div class="row" style="margin-top: 10px; color: yellow">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-6 text-left">
+						<a class="btn btn-primary" th:href="@{/browseGames}">Continue
+							Shopping</a>
+					</div>
+					<div class="col-xs-6 text-right">
+						<a class="btn btn-primary"
+							th:href="@{/checkout(id=${shoppingCart.id})}">Check Out</a>
+					</div>
+					<br /> <br /> <br />
+					<div th:if="${notEnoughStock}" class="alert alert-warning">
+						Oops, some of the products don't have enough stock. Please update
+						product quantity.</div>
+					<div th:if="${emptyCart}" class="alert alert-warning">Oops,
+						your cart is empty. See if you can find what you like in the list
+						of games and add them to your cart.</div>
+
+					<br /> <br />
+					<div class="row">
+						<div class="col-xs-8">
+							<h4>Products</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Price</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Qty</h4>
+						</div>
+					</div>
+
+					<div class="row" th:each="cartItem : ${cartItemList}">
+						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+							<hr />
+							<div class="col-xs-2">
+								<a th:href="@{/gameDetails?id=}+${cartItem.game.id}"> <img
+									style="width: 70px;"
+									class="img-responsive browse-games center-block"
+									th:src="#{adminPath}+@{/image/games/}+
+								${cartItem.game.id}+'.png'" />
+								</a>
+							</div>
+							<div class="col-xs-6">
+								<div style="margin-left: 50px;">
+									<a th:href="@{/gameDetails?id=}+${cartItem.game.id}"><h4
+											style="color: white" th:text="${cartItem.game.title}"></h4></a>
+									<p th:if="${cartItem.game.inStockNumber&gt;10}"
+										style="color: yellow">In Stock</p>
+									<p
+										th:if="${cartItem.game.inStockNumber&lt;10 and cartItem.game.inStockNumber&gt;0}"
+										style="color: yellow;">
+										Only <span th:text="${cartItem.game.inStockNumber}"></span> In
+										Stock
+									</p>
+									<p th:if="${cartItem.game.inStockNumber==0}"
+										style="color: darkred;">Product Unavailable</p>
+									<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}"
+										style="color: orange">remove</a>
+								</div>
+							</div>
+							<div class="col-xs-2">
+								<h5 style="color: #db3208; font-size: large;">
+									$<span th:text="${cartItem.game.ourPrice}"
+										th:style="${cartItem.game.inStockNumber}==0? 'text-decoration: line-through' : ''"></span>
+								</h5>
+							</div>
+
+							<div class="col-xs-2">
+								<input hidden="hidden" name="id" th:value="${cartItem.id}" /> <input
+									th:id="${cartItem.id}" th:name="qty"
+									th:disabled="${cartItem.game.inStockNumber==0}"
+									class="form-control cartItemQty" th:value="${cartItem.qty}" />
+								<button style="display: none;" 
+									th:id="'update-item-'+${cartItem.id}" type="submit"
+									class="btn btn-warning btn-xs">Update</button>
+							</div>
+						</form>
+					</div>
+
+					<div class="row">
+						<hr />
+						<h4 class="col-xs-12 text-right">
+							<strong style="font-size: large;">Total Price (<span
+								th:text="${#lists.size(cartItemList)}"></span> items):
+							</strong> <span style="color: #db3208; font-size: large;">$<span
+								th:text="${shoppingCart.grandTotal}"></span></span>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	
+	<div th:replace="common/header :: footer"></div>
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

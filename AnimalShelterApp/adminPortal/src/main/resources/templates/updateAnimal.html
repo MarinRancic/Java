@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar"> </div>
+
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal" th:action="@{/animal/updateAnimal}" method="post"
+				enctype="multipart/form-data">
+				<fieldset>
+					<div class="animal-info-title">
+						Update animal information
+					</div>
+					
+					<input hidden="hidden" name="id" th:value="${animal.id}" />
+					
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="name">Name</label>
+
+						<div class="col-md-8">
+							<input type="text" name="name" class="form-control" id="name"
+								th:value="${animal.name}" required="required" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="species">
+							Species</label>
+						<div class="col-md-8">
+							<input type="text" name="species" class="form-control" id="species"
+								th:value="${animal.species}" required="required"
+								/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="age">
+							Age</label>
+						<div class="col-md-8">
+							<input type="number" name="size" class="form-control" id="age"
+								th:value="${animal.age}" required="required"
+								/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="weight">Weight</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">kg</span> <input
+									th:value="${animal.weight}" type="number" name="weight" step="0.01"
+									class="form-control" id="weight" />
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="height">Height</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">m</span> <input
+									th:value="${animal.height}" type="number" name="height" step="0.01"
+									class="form-control" id="height"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="description">Description</label>
+						<div class="col-md-8">
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:value="${animal.description}" th:text="${animal.description}"
+								> </textarea>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-2">
+							<label for="animalImage">Upload animal image</label>
+						</div>
+						<div class="col-md-8">
+							<input id="animalImage" type="file" name="animalImage"
+								th:value="${animal.animalImage}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success">Update Animal</button>
+							<a class="btn btn-danger" th:href="@{/animal/animalInfo(id=${animal.id})}">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts"> </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/js/parallax.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<div class="container__volunteers_title">
+			<h1>VOLUNTEERS</h1>
+		</div>
+		<p>
+			Volunteers are the heart of our shelter. People come from all over
+			the world to volunteer - bringing love, hope and help to our animals.
+			Some people stay for an hour or a day and others return year after
+			year. Volunteers help clean, build and repair houses and fences, walk
+			and cuddle the animals. Everything a volunteer does improves the
+			shelter and the lives of our animals. Whether you're coming for a few
+			hours or a few weeks, we guarantee that volunteering at Animal
+			Shelter Marjan will be a unique and unforgettable experience and we
+			welcome you to join us! Check out our <a th:href="@{/contactUs}">contact
+				page</a> to join us!
+		</p>
+
+		<div class="container__dogWalking">
+			<img src="/image/dogWalking.png" class="dogWalking">
+
+			<div class="container__text">
+				<h2>DOG WALKING</h2>
+				<br />
+				<p>Our dogs become more adoptable when they spend more time with
+					people. Taking them for walks is a great way to help them be ready
+					to meet a potential new owner.</p>
+			</div>
+		</div>
+
+		<div class="container__feedingAnimals">
+			<img src="/image/feedingAnimals.png" class="feedingAnimals">
+
+			<div class="container__text">
+				<h2>FEEDING ANIMALS</h2>
+				<br />
+				<p>There is usually only 2 of us at the shelter and we have the
+					massive task of feeding and cleaning up after hundreds of animals
+					every day. We appreciate any help we can get.</p>
+			</div>
+		</div>
+
+		<div class="container__animalsPhotography">
+			<img src="/image/animalPhotography.png" class="animalsPhotography">
+
+			<div class="container__text">
+				<h2>PHOTOGRAPHY</h2>
+				<br />
+				<p>Our animals can't get adopted without great photos to show
+					off how amazing they are! We are desperately seeking photographers
+					to volunteer their time and expertise to take great photos of our
+					animals so we can share their gorgeous faces with new, potential
+					owners.</p>
+			</div>
+		</div>
+
+		<div class="container__animalsTransport">
+			<img src="/image/animalTransport.png" class="animalsTransport">
+
+			<div class="container__text">
+				<h2>TRANSPORT</h2>
+				<br />
+				<p>Our animals regularly require visits to the vet for desexing or
+					other vet procedures. We rely on volunteers to transport them so we
+					can focus on feeding and looking after over 300 animals at our
+					shelter. If you have a car and are available to help, we would love
+					to hear from you!</p>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</div>
+
+
+
+	<div th:replace="common/header :: footer"></div>
+
+	<!-- 	<div th:replace="common/header :: body-bottom-scripts"></div> -->
+</body>
+</html>

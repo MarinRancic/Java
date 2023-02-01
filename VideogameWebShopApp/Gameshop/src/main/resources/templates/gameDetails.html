@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header">
+
+
+</head>
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xs-8">
+				<h2 class="selection-headline">
+					<h2 class="section-headline">
+						<span
+							th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Games'"
+							style="color: green"></span>
+					</h2>
+				</h2>
+			</div>
+
+		</div>
+		<hr
+			style="position: absolute; width: 63%; height: 6px; background-color: yellow; z-index: -1; margin-top: 85px;" />
+		<div class="row" style="margin-top: 120px;"></div>
+		<form th:action="@{/shoppingCart/addItem}" method="post">
+			<input hidden="hidden" th:field="*{game.id}" />
+			<div class="row" style="margin-top: 120px;">
+				<div class="col-xs-3">
+					<a th:href="@{/browseGames}" style="color: pink"><h4>Back to game
+						list</h4></a><br /> <br/><br/><img class="img-responsive browse-games"
+						th:src="#{adminPath}+@{/image/games/}+${game.id}+'.png'" />
+				</div>
+				<div class="col-xs-9" style="color: yellow">
+				<h3><span th:if="${addGameSuccess}" style="color: pink"><i class="fa fa-check" aria-hidden="true" style="color: forestgreen"></i>Added to cart.</span></h3>
+    			<h3><span th:if="${notEnoughStock}" style="color: red">Oops, only <span th:text="${game.inStockNumber}"></span> In Stock.</span></h3>
+					<h3 th:text="${game.title}">Game Title</h3>
+					<div class="row">
+						<div class="col-xs-5" >
+							<h5>
+								<strong>Company: </strong><span th:text="${game.company}"></span>
+							</h5>
+							<p>
+								<strong>Category: </strong><span th:text="${game.category}"></span>
+							</p>
+							<p>
+								<strong>Platform: </strong><span th:text="${game.platform}"></span>
+							</p>
+							<p>
+								<strong>Size: </strong><span th:text="${game.size}+GB"></span>
+							</p>
+						</div>
+
+						<div class="col-xs-7" style="color:black">
+							<div class="panel panel-default"
+								style="border-width: 5px; margin-top: 20px;">
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-6">
+											<h4>
+												Our Price: <span style="color: blue;">$<span
+													th:text="${game.ourPrice}"></span></span>
+											</h4>
+											<p>
+												List Price: <span style="text-decoration: line-through">$<span
+													th:text="${game.listPrice}"></span></span>
+											</p>
+											<p>
+												You save: $<span
+													th:text="${#numbers.formatDecimal((game.listPrice - game.ourPrice), 0, 'COMMA', 2, 'POINT')}"></span>
+											</p>
+											<span>Qty: </span> <select name="qty">
+												<option th:each="qty : ${qtyList}" th:value="${qty}"
+													th:text="${qty}"></option>
+											</select>
+										</div>
+										<div class="col-xs-6">
+											<h4 th:if="*{game.inStockNumber&gt;10}" style="color: green">In
+												Stock</h4>
+											<h4
+												th:if="*{game.inStockNumber&lt;10 and game.inStockNumber&gt;0}"
+												style="color: orange">
+												Only <span th:text="${game.inStockNumber}"  > </span> in stock
+											</h4>
+											<h4 th:if="*{game.inStockNumber==0}" style="color: darkred">Unavailable</h4>
+											<button type="submit" class="btn btn-warning"
+												style="color: black; border: 1px solid black; padding: 10px 40px 10px 40px;">Add
+												to cart</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr/>
+						<p th:text="${game.description}"></p>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div th:replace="common/header :: footer"></div>
+	
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header">
+
+</head>
+<body>
+	<div th:replace="common/header :: navbar"></div>
+
+	<div class="container">
+		<h1 class="container__mainTitle">Welcome to Animal Shelter
+			Marjan!</h1>
+		<div class="container__mainPicture">
+			<img src="/image/mainPicture.png">
+		</div>
+
+		<div class="container__adopt">Adopt a pet from our Animal
+			Shelter</div>
+		<div class="container__adoptPicture">
+			<a th:href="@{/adopt}"><img src="/image/adoptPicture.png"></a>
+		</div>
+		
+		<div class="container__volunteer">Help us and become a volunteer!</div>
+		<div class="container__volunteerPicture">
+			<a th:href="@{/volunteer}"><img src="/image/volunteerPicture.png"></a>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+	<div th:replace="common/header :: footer"></div>
+
+</body>
+</html>

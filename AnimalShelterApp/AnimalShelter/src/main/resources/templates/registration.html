@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+<title>Animal Shelter Marjan</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+	<div class="container">
+		<h5 class="center-block"
+			style="text-align: center; font-size: 37px; padding-top: 100px">Welcome
+			to Animal Shelter</h5>
+		<br /> <br />
+
+		<div class="row">
+			<div class="col-xs-4 col-md-offset-4">
+				<form th:action="@{/newUser}" method="post">
+					<h2 class="form-register-heading">Please register</h2>
+					<div class="form-group">
+						<label for="username"></label>&nbsp;<span
+							style="color: red;" th:if="${usernameExists}">Username
+							already exists. Choose a different one.</span><span
+							style="color: green;" th:if="${accountCreated}">New Account successfully created!</span> <input
+							required="required" type="text" class="form-control"
+							id="username" placeholder="Username" name="username" />
+					</div>
+					<div class="form-group">
+						<label for="password" class="sr-only"></label> <input
+							type="password" class="form-control" placeholder="Password"
+							name="password" id="password" required="required" />
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Create new Account</button>
+				</form>
+			</div>
+		</div>
+		<p style="all: unset; padding-left: 430px">
+			Already have an account? Login <a href="/login">here</a>
+		</p>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+	<div class="container">
+		<div class="table-responsive">
+			<table id="commentaryList"
+				class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Comment</th>
+						<th>Activity</th>
+						<th>User</th>
+						<th>Response</th>
+						<th>Current response</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr data-th-each="commentary : ${commentaryList}">
+						<td th:text="${commentary.text}"></td>
+						<td th:text="${commentary.active}"></td>
+						<td th:text="${commentary.username}"></td>
+						<td>
+							<form th:action="@{/commentaryList/newResponse?id=}+${commentary.id}" method="post">
+								<div class="form-group">
+									<textarea name="adminResponse" class="form-control"
+										id="adminResponse"></textarea>
+								</div>
+								<button type="submit" class="btn btn-primary">Post your
+									response</button>
+							</form>
+						</td>
+						<td th:text="${commentary.adminResponse}"></td>
+						<td><a
+							th:href="@{/commentaryList/remove?id=}+${commentary.id}"
+							class="btn btn-danger">Delete</a> <a
+							th:href="@{/commentaryList/changeActive?id=}+${commentary.id}"
+							class="btn btn-danger" th:if="${commentary.active}">INACTIVE</a>
+							<a th:href="@{/commentaryList/changeActive?id=}+${commentary.id}"
+							class="btn btn-success" th:if="${!(commentary.active)}">ACTIVE</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

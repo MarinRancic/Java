@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<head th:fragment="common-header">
+<meta charset="utf-8">
+
+<title>Animal Shelter Marjan</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div th:fragment="navbar" class="container_header">
+
+		<div class="container_logo">
+			<h1>
+				<a href="/"> AS<span>Marjan</span></a>
+			</h1>
+		</div>
+		<div class="container_navigation">
+			<ul>
+				<li><a th:href="@{/aboutUs}">ABOUT US</a></li>
+				<li><a th:href="@{/adopt}">ADOPT</a></li>
+				<li><a th:href="@{/volunteer}">VOLUNTEER</a></li>
+				<li><a th:href="@{/contactUs}">CONTACT US</a></li>
+				<li><a th:href="@{/donate}">DONATE</a></li>
+				<li><a th:href="@{/logout}">LOGOUT</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div th:fragment="footer" style="margin-top:175px">
+		<div class="container_footer">
+			<p>Animal Shelter Marjan ©2022 - All Rights Reserved</p>
+		</div>
+	</div>
+</body>
+</html>
